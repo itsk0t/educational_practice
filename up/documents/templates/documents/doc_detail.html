@@ -1,0 +1,23 @@
+{% extends 'root.html' %}
+
+{% block title %}Documents detail{% endblock %}
+
+{% block content %}
+<div>
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ doc_detail.image.url }}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ doc_detail.title }}</h5>
+                    <p class="card-text">{{ doc_detail.body }}</p>
+                    <p class="card-text">{{ doc_detail.deadline }}</p>
+                    <a class="btn btn-primary" href="#">Open</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
