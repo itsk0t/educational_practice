@@ -33,4 +33,4 @@ class LoginUserView(LoginView):
     #     return dict(list(context.items()) + list(c_def.items()))
 
     def get_success_url(self):
-        return reverse_lazy('home')
+        return reverse_lazy('doc:doc_list')

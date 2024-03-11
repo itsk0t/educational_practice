@@ -21,17 +21,23 @@
                         <a class="nav-link" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Documents</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'doc:doc_list' %}">Documents</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Application</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'appli:appli' %}">Application</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'auth:logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'auth:register' %}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Register</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'auth:login' %}">Login</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Login</a>
-                    </li>
+                    {% endif %}
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
                         <button class="btn btn-outline-success" type="submit">Поиск</button>
