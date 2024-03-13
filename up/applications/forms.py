@@ -14,6 +14,6 @@ class ApplicationForm(forms.ModelForm):
             'phone': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Номер телефона'}),
             'address': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Адрес проживания'}),
             'document_id': forms.Select(attrs={'class': 'form-input', 'placeholder': 'Документ'}),
-            'files': forms.FileField(),
+            # 'files': forms.FileField(),
             'comment': forms.Textarea(attrs={'class': 'form-input', 'placeholder': 'Комментарий'})
         }

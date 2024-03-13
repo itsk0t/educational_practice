@@ -10,13 +10,14 @@ def handle_uploaded_file(f):
 
 
 def application_view(request):
+    form = ApplicationForm()
     if request.method == 'POST':
         form = ApplicationForm(request.POST, request.FILES)
         if form.is_valid():
-            handle_uploaded_file(form.cleaned_data['file'])
+            handle_uploaded_file(form.cleaned_data['files'])
             form.save()
             return HttpResponse('Заявка принята успешно')
         else:
             form = ApplicationForm()
 
-        return render(request, 'applications/applications.html', {'form': form})
+    return render(request, 'applications/applications.html', {'form': form})
