@@ -5,7 +5,17 @@ from applications.models import Applications
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Applications
-        fields = ['full_name', 'date_birth', 'passport_series', 'passport_number', 'phone', 'address', 'document_id', 'files', 'comment']
+        fields = ['full_name',
+                  'date_birth',
+                  'passport_series',
+                  'passport_number',
+                  'phone',
+                  'address',
+                  'document_id',
+                  'files',
+                  'comment',
+                  ]
+
         widgets = {
             'full_name': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'ФИО'}),
             'date_birth': forms.DateInput(attrs={'class': 'form-input', 'placeholder': 'Дата рождения'}),
@@ -15,5 +25,6 @@ class ApplicationForm(forms.ModelForm):
             'address': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Адрес проживания'}),
             'document_id': forms.Select(attrs={'class': 'form-input', 'placeholder': 'Документ'}),
             # 'files': forms.FileField(),
-            'comment': forms.Textarea(attrs={'class': 'form-input', 'placeholder': 'Комментарий'})
+            'comment': forms.Textarea(attrs={'class': 'form-input', 'placeholder': 'Комментарий'}),
+            # 'user_id': forms.IntegerField()
         }

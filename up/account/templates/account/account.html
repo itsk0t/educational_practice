@@ -1,0 +1,45 @@
+{% extends 'root.html' %}
+
+{% block title %}Account{% endblock %}
+
+<div>
+    {% block content %}
+    <div>
+        <h2>Your account</h2>
+        <div>
+            <div class="card">
+                <div class="card-header">
+                    {{ username }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ name }} {{ last_name }}</h5>
+                    <a href="{% url 'auth:logout' %}" class="btn btn-primary">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h2>Your Application</h2>
+        <div>
+            {% for el in app_mod %}
+            {% if el.user_id.username == username %}
+            <div class="card">
+                <div class="card-header">
+                    {{ el.document_id }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ el.full_name }}</h5>
+                    <p class="card-text">{{ el.comment }} <br> {{ el.status_id }}</p>
+                    <a href="{% url 'applications:app_delete' el.id %}" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+            {% else %}
+                {{ continue }}
+            {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
+</div>

@@ -1,5 +1,8 @@
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views.generic import DeleteView
+
 from applications.forms import ApplicationForm
 
 
@@ -10,7 +13,9 @@ def handle_uploaded_file(f):
 
 
 def application_view(request):
-    form = ApplicationForm()
+    current_user_id = request.user.id
+    form = ApplicationForm(initial={'user_id': current_user_id})
+
     if request.method == 'POST':
         form = ApplicationForm(request.POST, request.FILES)
         if form.is_valid():
@@ -21,3 +26,9 @@ def application_view(request):
             form = ApplicationForm()
 
     return render(request, 'applications/applications.html', {'form': form})
+
+
+class ApplicationDeleteView(DeleteView):
+    model = ApplicationForm
+    # success_url = '/applications/'
+    template_name = 'applications/applications_delete.html'

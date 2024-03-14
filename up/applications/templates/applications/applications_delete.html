@@ -1,0 +1,13 @@
+{% extends 'root.html' %}
+
+{% block title %}Delete Applications{% endblock %}
+
+{% block content %}
+    <div style="margin: 2%;">
+        <h3>Delete Applications</h3><br>
+        <form method="post" style="width: 50%;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary" style="font-size: 22px;">Delete</button>
+        </form>
+    </div>
+{% endblock %}
