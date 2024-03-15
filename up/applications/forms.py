@@ -26,5 +26,5 @@ class ApplicationForm(forms.ModelForm):
             'document_id': forms.Select(attrs={'class': 'form-input', 'placeholder': 'Документ'}),
             # 'files': forms.FileField(),
             'comment': forms.Textarea(attrs={'class': 'form-input', 'placeholder': 'Комментарий'}),
-            # 'user_id': forms.IntegerField()
+            'user_id': forms.IntegerField()
         }

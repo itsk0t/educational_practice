@@ -1,34 +1,26 @@
-from django.contrib.auth.models import User
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from django.views.generic import DeleteView
-
 from applications.forms import ApplicationForm
-
-
-def handle_uploaded_file(f):
-    with open(f"uploads/{f.name}", "wb+") as destination:
-        for chunk in f.chunks():
-            destination.write(chunk)
+from applications.models import Applications
 
 
 def application_view(request):
-    current_user_id = request.user.id
-    form = ApplicationForm(initial={'user_id': current_user_id})
-
     if request.method == 'POST':
         form = ApplicationForm(request.POST, request.FILES)
         if form.is_valid():
-            handle_uploaded_file(form.cleaned_data['files'])
-            form.save()
-            return HttpResponse('Заявка принята успешно')
-        else:
-            form = ApplicationForm()
+            applications = form.save(commit=False)
+            applications.user_id = request.user
+            applications.save()
+
+            return redirect('account:account')
+    else:
+        form = ApplicationForm()
 
     return render(request, 'applications/applications.html', {'form': form})
 
 
 class ApplicationDeleteView(DeleteView):
-    model = ApplicationForm
-    # success_url = '/applications/'
+    model = Applications
+    success_url = '/account/'
     template_name = 'applications/applications_delete.html'

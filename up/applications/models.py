@@ -24,7 +24,7 @@ class Applications(models.Model):
     document_id = models.ForeignKey(Documents, on_delete=models.CASCADE)
     files = models.FileField('Файл')
     comment = models.TextField('Комментарий')
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     status_id = models.ForeignKey(Status, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
