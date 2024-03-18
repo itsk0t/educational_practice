@@ -4,12 +4,12 @@ from django import forms
 
 
 class RegisterUserForm(UserCreationForm):
-    username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    first_name = forms.CharField(label='Имя', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    last_name = forms.CharField(label='Фамилия', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-input'}))
-    password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
-    password2 = forms.CharField(label='Повтор пароля', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    username = forms.CharField(label='', widget=forms.TextInput(attrs={'class': 'form-control w-75', 'placeholder': 'Логин'}))
+    first_name = forms.CharField(label='', widget=forms.TextInput(attrs={'class': 'form-control w-75', 'placeholder': 'Имя'}))
+    last_name = forms.CharField(label='', widget=forms.TextInput(attrs={'class': 'form-control w-75', 'placeholder': 'Фамилия'}))
+    email = forms.EmailField(label='', widget=forms.EmailInput(attrs={'class': 'form-control w-75', 'placeholder': 'Email-адрес'}))
+    password1 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class': 'form-control w-75', 'placeholder': 'Пароль'}))
+    password2 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class': 'form-control w-75', 'placeholder': 'Повтор пароля'}))
 
     class Meta:
         model = User
@@ -17,5 +17,5 @@ class RegisterUserForm(UserCreationForm):
 
 
 class LoginUserForm(AuthenticationForm):
-    username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    username = forms.CharField(label='', widget=forms.TextInput(attrs={'class': 'form-control w-75', 'placeholder':'Логин'}))
+    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class': 'form-control w-75', 'placeholder':'Пароль'}))

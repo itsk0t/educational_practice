@@ -5,7 +5,7 @@
 <div>
     {% block content %}
     <div>
-        <h2>Your account</h2>
+        <h2>Ваш профлиль</h2>
         <div>
             <div class="card">
                 <div class="card-header">
@@ -13,14 +13,16 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">{{ name }} {{ last_name }}</h5>
-                    <a href="{% url 'auth:logout' %}" class="btn btn-primary">Logout</a>
+                    <a href="{% url 'auth:logout' %}" class="btn btn-primary">Выйти</a>
                 </div>
             </div>
         </div>
     </div>
 
+    <hr style="" class="w-100 mt-4 mb-3">
+
     <div>
-        <h2>Your Application</h2>
+        <h2>Ваши заявки</h2>
         <div>
             {% for el in app_mod %}
             <div class="card">
@@ -30,7 +32,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ el.full_name }}</h5>
                     <p class="card-text">{{ el.comment }} <br> {{ el.status_id }}</p>
-                    <a href="{% url 'applications:app_delete' el.id %}" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'applications:app_delete' el.id %}" class="btn btn-danger">Отменить</a>
                 </div>
             </div>
             {% endfor %}

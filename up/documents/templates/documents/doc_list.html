@@ -4,14 +4,14 @@
 
 {% block content %}
 <div>
-    <div>
+    <div class="d-flex justify-content-around">
         {% for el in doc_list %}
         <div class="card" style="width: 18rem;">
             <img src="{{ el.image.url }}" class="card-img-top" alt="{{ el.title }}">
             <div class="card-body">
                 <h5 class="card-title">{{ el.title }}</h5>
                 <p class="card-text">{{ el.deadline }}</p>
-                <a href="{% url 'doc:doc_detail' el.id %}" class="btn btn-primary w-100">Open</a>
+                <a href="{% url 'doc:doc_detail' el.id %}" class="btn btn-primary w-100">Подробнее</a>
             </div>
         </div>
         {% endfor %}
